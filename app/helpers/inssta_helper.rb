@@ -1,0 +1,2 @@
+module InsstaHelper
+end
