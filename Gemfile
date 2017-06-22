@@ -53,4 +53,8 @@ group :development, :test do
 
   gem 'rails_12factor',group: :production
 
+
+  gem 'omniauth'
+  gem 'omniauth-twitter'
+  gem 'omniauth-facebook'
 end
