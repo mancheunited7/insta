@@ -5,7 +5,7 @@ class PicturesController < ApplicationController
 
   def new
     if params[:back]
-      @insta = Picutre.new(insta_params)
+      @insta = Picture.new(insta_params)
     else
       @insta = Picture.new
     end
