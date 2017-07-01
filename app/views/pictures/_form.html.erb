@@ -1,25 +1,23 @@
-<%= form_for(@insta,url:choose_new_or_edit) do |f| %>
+<%= form_for(@insta, url: choose_new_or_edit) do |f| %>
  <% if @insta.errors.any? %>
  <div id="error_explanation">
-   <h2><%=@insta.errors.count %>件のエラーがあります。</h2>
+ <h2><%=@insta.errors.count %>件のエラーがあります。</h2>
 
  <ul>
-   <% @insta.errors.full_messages.each do |msg| %>
-   <li><<%= msg %></li>
-   <%  end %>
+ <% @insta.errors.full_messages.each do |msg| %>
+ <li><%= msg %></li>
+ <% end %>
  </ul>
  </div>
  <% end %>
 
  <%= f.label :title %>
- <%= f.text_field :title,class:'form-control'%>
+ <%= f.text_field :title,class:'form-control' %>
  <br>
  <%= f.label :content %>
  <%= f.text_field :content,class:'form-control' %>
  <br>
-
- <%= f.submit "投稿",class:'btn btn-primary btn-block' %>
-
+ <%= f.submit'投稿',class:'btn btn-primary btn-block' %>
  <% end %>
 
- <%= link_to "投稿一覧に戻る",pictures_path %>
+ <%=link_to "投稿一覧画面にもどる",pictures_path %>
