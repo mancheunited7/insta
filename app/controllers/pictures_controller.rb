@@ -1,21 +1,31 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :set_insta,only:[:edit,:update,:destroy]
+
   def new
-    @insta = Picture.new
+    if params[:back]
+      @insta = Picutre.new(insta_params)
+    else
+      @insta = Picture.new
+    end
   end
 
   def create
     @insta = Picture.new(insta_params)
+    @insta.user_id = current_user.id
+    @insta.user_name = current_user.name
     if @insta.save
-      redirect_to pictures_path,"[insta]新たな投稿がありました"
+      redirect_to pictures_path,notice:"[insta]新たな投稿がありました"
       NoticeMailer.sendmail_picture(@insta).deliver
     else
-       rendr 'new'
+      render 'new'
     end
   end
 
   def index
     @instas = Picture.all
+    @users = User.all
   end
 
   def edit
@@ -25,11 +35,30 @@ class PicturesController < ApplicationController
   def destroy
     @insta = Picture.find(params[:id])
     @insta.destroy
+    redirect_to pictures_path,notice:"投稿を削除しました！！"
   end
+
+  def confirm
+   @insta = Picture.new(insta_params)
+   render :new if @insta.invalid?
+  end
+
+  def update
+   @insta = Picture.find(params[:id])
+   if @insta.update(insta_params)
+     redirect_to pictures_path,notice:"投稿を更新しました！！"
+   else
+     render 'edit'
+   end
+ end
 
   private
     def insta_params
-     params.require(:insta).permit(:title,:content)
-   end
+     params.require(:picture).permit(:title,:content)
+    end
+
+    def set_insta
+      @insta = Picture.find(params[:id])
+    end
 
 end

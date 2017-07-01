@@ -17,28 +17,27 @@ footer{
   left:20px;
 }
 
-.main-header{
-  padding-bottom: 15%;
-  width: 100%;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 header{
-  height: 50px;
+  height: 30px;
   font-size:15px;
   width:100%;
 }
 
 .insta{
-  position:relative;
+  position: absolute;
   top:10px;
-  list-style: none;
 }
 
 .flash{
-  color:white;
-  padding-top: 10px
+  color:red;
+  position: relative;
+  left:40px
+}
+
+.flash2{
+  color:red;
+  position: relative;
+  left:10px;
 }
 
 .navbar-default {
@@ -64,7 +63,7 @@ header{
   }
   .navbar-nav > .open > a {
     background-color: transparent;
-    color: white;
+    color: black;
     &:hover, &:focus {
       background-color: transparent;
       color: white;

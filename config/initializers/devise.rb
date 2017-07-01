@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '64cbace5dba99b38c0c0952ef5875b657ecc0999fd8846f654327d2b46f6b87d1f7c79c7f392409952c70b07b2d88f7a6b7c1956625ed77949c742478e4ec3ed'
+   config.secret_key = '64cbace5dba99b38c0c0952ef5875b657ecc0999fd8846f654327d2b46f6b87d1f7c79c7f392409952c70b07b2d88f7a6b7c1956625ed77949c742478e4ec3ed'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -17,10 +17,10 @@ Devise.setup do |config|
   if Rails.env.production?
    config.omniauth :facebook, ENV["FACEBOOK_ID_PRODUCTION"], ENV["FACEBOOK_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
    config.omniauth :twitter, ENV["TWITTER_ID_PRODUCTION"], ENV["TWITTER_SECRET_PRODUCTION"], scope: 'email', display: 'popup', info_fields: 'name, email'
-  else
+ else
    config.omniauth :facebook, ENV["FACEBOOK_ID_DEVELOPMENT"], ENV["FACEBOOK_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
    config.omniauth :twitter, ENV["TWITTER_ID_DEVELOPMENT"], ENV["TWITTER_SECRET_DEVELOPMENT"], scope: 'email', display: 'popup', info_fields: 'name, email'
-  end
+ end
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

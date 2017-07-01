@@ -1,10 +1,15 @@
-<div class="container">
+<div class= container>
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-   <p><%=notice %></p>
+   <p class="flash2"><%=notice %></p>
    <h2>投稿一覧</h2>
-    <%= @instas.each do |f| %>
+   <%= link_to "投稿する",new_picture_path,class:'btn btn-default' %>
+
+    <% @instas.each do |f| %>
     <div class="row">
-      <%= f.content %>
+      <%=profile_img(f.user) if profile_img(f.user) %>
+      <p><%= f.title %></p>
+      <p><%= f.content %></p>
+      <p><%= f.user.name %></p>
       <%= link_to "編集",edit_picture_path(f.id),class:'btn btn-default btn-sm btn-success' %>
       <%= link_to "削除",picture_path(f.id),method: :delete,data:{confirm:'削除してもいいですか？'},class:'btn btn-default btn-sm btn-danger' %>
     </div>

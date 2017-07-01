@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  
   devise_for :users,controllers:{
+    Registrations: "users/registrations",
     omniauth_callbacks: "users/omniauth_callbacks"
   }
 
-  resources :pictures,only:[:new,:edit,:create,:destroy,:index] do
+  resources :pictures,only:[:new,:edit,:create,:destroy,:index,:update] do
     collection do
-      post:confirm
+      post :confirm
     end
   end
 
