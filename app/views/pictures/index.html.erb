@@ -1,12 +1,17 @@
 <div class= container>
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
    <p class="flash2"><%=notice %></p>
-   <h2>投稿一覧</h2>
+   <h2>写真投稿一覧</h2>
    <%= link_to "投稿する",new_picture_path,class:'btn btn-default' %>
 
     <% @instas.each do |f| %>
     <div class="row">
       <%=profile_img(f.user) if profile_img(f.user) %>
+      <% if f.image? %>
+      <p><%= image_tag(f.image) %></p>
+      <% else %>
+      <p><%= image_tag(noimage.png) %></p>
+      <% end %>
       <p><%= f.title %></p>
       <p><%= f.content %></p>
       <p><%= f.user.name %></p>

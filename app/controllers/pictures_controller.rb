@@ -16,7 +16,7 @@ class PicturesController < ApplicationController
     @insta.user_id = current_user.id
     @insta.user_name = current_user.name
     if @insta.save
-      redirect_to pictures_path,notice:"[insta]新たな投稿がありました"
+      redirect_to pictures_path,notice:"[Runsta]新たな投稿がありました"
       NoticeMailer.sendmail_picture(@insta).deliver
     else
       render 'new'
@@ -38,11 +38,6 @@ class PicturesController < ApplicationController
     redirect_to pictures_path,notice:"投稿を削除しました！！"
   end
 
-  def confirm
-   @insta = Picture.new(insta_params)
-   render :new if @insta.invalid?
-  end
-
   def update
    @insta = Picture.find(params[:id])
    if @insta.update(insta_params)
@@ -54,7 +49,7 @@ class PicturesController < ApplicationController
 
   private
     def insta_params
-     params.require(:picture).permit(:title,:content)
+     params.require(:picture).permit(:image,:title,:content)
     end
 
     def set_insta
