@@ -49,7 +49,7 @@ class PicturesController < ApplicationController
 
   private
     def insta_params
-     params.require(:picture).permit(:image,:title,:content)
+     params.require(:picture).permit(:gazo,:title,:content)
     end
 
     def set_insta
